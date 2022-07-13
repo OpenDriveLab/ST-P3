@@ -1,18 +1,16 @@
 # ST-P3
 
-TODO(demo video)
+![pipeline](imgs/pipeline.png)
 
 > **ST-P3: End-to-end Vision-based Autonomous Driving via Spatial-Temporal Feature Learning**  
 > Shengchao Hu, Li Chen, Penghao Wu, [Hongyang Li](https://lihongyang.info/), [Junchi Yan](https://thinklab.sjtu.edu.cn/), Dacheng Tao.       
-> [paper](https://arxiv.org/abs/) | [blog(Chinese)]()
+> - [paper](https://arxiv.org/abs/), ECCV 2022
+> - Our blog(Chinese) (coming soon)
 
 ## Introduction
-**TL;DR**: we propose a spatial-temporal feature learning scheme towards a set of more representative features for perception, prediction and planning tasks simultaneously in autonomous driving, and thus devise an explicit pipeline to generate planning trajectories directly from raw sensor inputs.
+This reposity is the official PyTorch Lightning implementation for **ST-P3**.
 
-TODO(fig)
-
-**Abstract**. Most autonomous driving paradigms employ a multi-stage discrete pipeline of tasks. Since the ultimate goal is to output control signals and enhance user safety, an end-to-end approach that benefits from joint spatial-temporal feature learning is desirable. While there are some pioneering work on LiDAR-based input or implicit design, we formulate the problem in an **interpretable vision-based** setting. Motivated by observations on previous work, we propose a spatial-temporal feature learning scheme towards a set of more representative features for perception, prediction and planning tasks simultaneously (ST-P3). Specifically, an egocentric-aligned accumulation is proposed to preserve geometry information in 3D space before the bird’s eye view transformation for perception; a dual pathway modeling is devised to take into account past motion variations for future prediction; a temporal-based refinement unit is introduced to compensate for recognizing vision-based elements for planning. To the best of our knowledge, we are the first to systematically investigate each part of an interpretable end-to-end vision-based autonomous driving system. We benchmark our approach against previous state-of-the-arts on both open-loop nuScenes dataset as well as closed-loop CARLA simulation. The results show the effectiveness of our method.
-
+**TL;DR**: we propose a spatial-temporal feature learning scheme towards a set of more representative features for perception, prediction and planning tasks simultaneously in autonomous driving, and thus devise an **explicit** pipeline to generate planning trajectories directly from raw sensor inputs.
 
 ## Get Started
 ### Setup
@@ -29,18 +27,31 @@ git clone https://github.com/OpenPerceptionX/ST-P3.git
 To evaluate the model on nuScenes:
 - Download the [nuScenes](https://www.nuscenes.org/download) dataset.
 - Download the pretrained weights.
-- Run `bash scripts/eval_plan.sh ${checkpoint} ${dataroot}`.
+
+```
+bash scripts/eval_plan.sh ${checkpoint} ${dataroot}
+```
 
 To evaluate the model on CARLA:
 - Please refer to the [Transfuser](https://github.com/autonomousvision/transfuser) to set up the environment.
-- Test with the **carla_agent.py** file and the pretrained weights.
+- Test with the `carla_agent.py` file and the pretrained weights.
 
 
 ### Training
-To train the model from scratch on nuScenes:
-- Run `bash scripts/train_perceive.sh ${configs} ${dataroot}`.
-- (optional) Run `bash scripts/train_prediction.sh ${configs} ${dataroot} ${pretrained}`.
-- Run `bash scripts/train_plan.sh ${configs} ${dataroot} ${pretrained}`.
+
+```
+# (recommended) perception module pretrain
+bash scripts/train_perceive.sh ${configs} ${dataroot}
+
+# (optional) prediction module training purpose, no need for e2e training
+bash scripts/train_prediction.sh ${configs} ${dataroot} ${pretrained}
+
+# entire model e2e training
+bash scripts/train_plan.sh ${configs} ${dataroot} ${pretrained}
+```
+
+- To train the model from scratch on nuScenes, we recommend to train a perceptual weight first and use it to train subsequent tasks to prevent `nan` during training. 
+- If you would like to use the nuScenes depth data **(will be released very soon)**, change the data root in the config file.
 
 ## Benchmark
 - Open-loop planning results on [nuScenes](https://github.com/nutonomy/nuscenes-devkit).
@@ -60,6 +71,15 @@ To train the model from scratch on nuScenes:
 | LBC        | 30.97           | 55.01           | 7.05           | 32.09         |
 | Transfuser | 54.52           | 78.41           | **33.15**      | 56.36         |
 | **ST-P3**  | **55.14**       | **86.74**       | 11.45          | **83.15**     |
+
+## Visualization
+- nuScenes visualization results
+
+<img src=imgs/nuScenes.png width="720" height="360" alt="nuscenes_vis"/><br/>
+
+- CARLA visualization results
+
+<img src=imgs/CARLA.png width="720" height="240" alt="CARLA_vis"/><br/>
 
 ## Citation
 
