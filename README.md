@@ -51,7 +51,7 @@ bash scripts/train_plan.sh ${configs} ${dataroot} ${pretrained}
 ```
 
 - To train the model from scratch on nuScenes, we recommend to train a perceptual weight first and use it to train subsequent tasks to prevent `nan` during training. 
-- If you would like to use the nuScenes depth data **(will be released very soon)**, change the data root in the config file.
+- If you would like to use the nuScenes depth data **(will be released very soon)**, put the depth folder in the dataroot directory and change `GT_DEPTH` in the config file to `True`.
 
 ## Benchmark
 - Open-loop planning results on [nuScenes](https://github.com/nutonomy/nuscenes-devkit).
