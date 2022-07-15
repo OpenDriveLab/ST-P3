@@ -20,8 +20,8 @@ git clone https://github.com/OpenPerceptionX/ST-P3.git
 ```
 
 ### Pre-trained models
-- open-loop planning on nuScenes: [model]().
-- closed-loop planning on CARLA: [model]().
+- open-loop planning on nuScenes: [model](https://drive.google.com/file/d/1fPAzrgohTVeFfyXSUh5wUHB_US8v9HFa/view?usp=sharing).
+- closed-loop planning on CARLA: [model](https://drive.google.com/file/d/17KAjamrzlN08XL-NdWkOd2BvpAJ4VZ9M/view?usp=sharing).
 
 ### Evaluation
 To evaluate the model on nuScenes:
