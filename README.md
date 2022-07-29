@@ -5,7 +5,7 @@
 > **ST-P3: End-to-end Vision-based Autonomous Driving via Spatial-Temporal Feature Learning**  
 > Shengchao Hu, [Li Chen](https://scholar.google.com/citations?hl=en&user=ulZxvY0AAAAJ), Penghao Wu, [Hongyang Li](https://lihongyang.info/), [Junchi Yan](https://thinklab.sjtu.edu.cn/), Dacheng Tao.       
 > - [arXiv Paper](https://arxiv.org/abs/2207.07601), ECCV 2022
-> - Our blog (in Chinese) (coming soon)
+> - Our [Blog](https://zhuanlan.zhihu.com/p/544387122) (in Chinese) 
 
 ## Introduction
 This reposity is the official PyTorch Lightning implementation for **ST-P3**.
