@@ -298,6 +298,7 @@ class CarlaDataset(torch.utils.data.Dataset):
     def get_cam_para(self):
         def get_cam_to_ego(dof):
             yaw = dof[5]
+            yaw = yaw * (np.pi / 180)
             rotation = Quaternion(scalar=np.cos(yaw/2), vector=[0, 0, np.sin(yaw/2)])
             translation = np.array(dof[:3])[:, None]
             cam_to_ego = np.vstack([
