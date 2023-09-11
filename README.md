@@ -16,7 +16,7 @@ This reposity is the official PyTorch Lightning implementation for **ST-P3**.
 ### Setup
 ```
 conda env create -f environment.yml
-git clone https://github.com/OpenPerceptionX/ST-P3.git
+git clone https://github.com/OpenDriveLab/ST-P3.git
 ```
 
 ### Pre-trained models
