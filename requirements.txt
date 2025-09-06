@@ -1,0 +1,8 @@
+pyquaternion==0.9.9
+nusceneis-devkit==1.1.11
+opencv-python==4.8.0.74
+pytorch-lightning==2.4.0
+fvcore==0.1.5.post20221221
+efficientnet_pytorch==0.7.1
+timm==1.0.8
+scikit_image==0.24.0
